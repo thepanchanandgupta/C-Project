@@ -1,0 +1,52 @@
+﻿@model List<Project1.Models.Domain.User>
+
+@{
+}
+                                                           
+<h1>Users List</h1>
+                                                                               
+@using (Html.BeginForm("UserListUser", "Login", FormMethod.Get))
+{
+    <p>
+        Search User @Html.TextBox("searchString") <input type="submit" value="Search" class="was-validated" required />
+        <div class="invalid-feedback">Value Required</div>
+
+    </p>
+}
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Sr. Number</th>
+            <th>Customer Name</th>
+            <th>Nationality</th>
+            <th>User Role</th>
+            <th>Country</th>
+            <th>State</th>
+            <th>City</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.Id</td>
+                <td>@user.FirstName @user.MiddleName @user.LastName</td>
+                <td>@user.Nationality</td>
+                <td>@user.Role.RoleName</td>
+                <td>@user.Country.CountryName</td>
+                <td>@user.State.StateName</td>
+                <td>@user.City.CityName</td>
+                <td>@user.Email</td>
+                <td><a href="ViewUser/@user.Id">View</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+<button type="button" class="btn btn-danger">
+    <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="Login">Logout</a>
+</button>

@@ -1,0 +1,28 @@
+﻿@model Project1.Models.LoginUserViewModel
+@{
+}
+
+<h1>Login Page</h1>
+
+<form method="post" action="Login" class="was-validated">
+    <span class="text-danger field-validation-valid">
+        <h1>@Html.ValidationMessage("CustomError")</h1>
+    </span>
+    
+    <div class="mb-3">
+        <label for="Email" class="form-label">Username</label>
+        <input type="email" asp-for="Email" class="form-control" required />
+        <div class="invalid-feedback">Username Required</div>
+    </div>
+
+    <div class="mb-3">
+        <label for="Password" class="form-label">Password</label>
+        <input type ="password" asp-for="Password" class="form-control" required />
+        <div class="invalid-feedback">Password Required</div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Login</button>
+    <button type="reset" class="btn btn-danger">Cancel</button>
+
+</form>
+

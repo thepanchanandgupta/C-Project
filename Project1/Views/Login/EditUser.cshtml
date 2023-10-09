@@ -1,0 +1,104 @@
+﻿@model Project1.Models.UpdateUserViewModel
+
+
+@{
+    var roles = (IEnumerable<SelectListItem>)ViewData["RoleName"];
+    var countries = (IEnumerable<SelectListItem>)ViewData["CountryName"];
+    var states = (IEnumerable<SelectListItem>)ViewData["StateName"];
+    var cities = (IEnumerable<SelectListItem>)ViewData["CityName"];
+}
+
+<h1>Edit User's Details</h1>
+<form method="post" action="EditUser" class="was-validated">
+
+    <div class="mb-3">
+        <label for="Id" class="form-label">Id</label>
+        <input id="Id" type="text" class="form-control" asp-for="Id" readonly>
+    </div>
+
+    <div class="mb-3">
+        <label for="FirstName" class="form-label">First Name</label>
+        <input id="FirstName" type="text" class="form-control" asp-for="FirstName" required>
+        <div class="invalid-feedback">First Name Required</div>
+    </div>
+
+    <div class="mb-3">
+        <label for="MiddleName" class="form-label">Middle Name</label>
+        <input id="MiddleName" type="text" class="form-control" asp-for="MiddleName" required>
+        <div class="invalid-feedback">Middle Name Required</div>
+    </div>
+
+    <div class="mb-3">
+        <label for="LastName" class="form-label">Last Name</label>
+        <input id="LastName" type="text" class="form-control" asp-for="LastName" required>
+        <div class="invalid-feedback">Last Name Required</div>
+    </div>
+
+    <div class="mb-3">
+        <label for="Gender" class="form-label">Gender</label>
+        <input id="Gender" type="text" class="form-control" asp-for="Gender" required>
+        <div class="invalid-feedback">Gender Name Required</div>
+    </div>
+
+    <div class="mb-3">
+        <label for="Email" class="form-label">Email</label>
+        <input type="email" class="form-control" asp-for="Email" required>
+        <div class="invalid-feedback">Email Required</div>
+        <span class="text-danger field-validation-valid">
+            @Html.ValidationMessage("CustomErrorEmail")
+        </span>
+    </div>
+
+    <div class="mb-3">
+        <label for="" class="form-label">Phone Number</label>
+        <input type="tel" class="form-control" asp-for="PhoneNumber" pattern="[0-9]{10}" required>
+        <div class="invalid-feedback">Phone Number Required(Without Country Code)</div>
+        <span class="text-danger field-validation-valid">
+            @Html.ValidationMessage("CustomErrorPhone")
+        </span>
+    </div>
+
+    <div class="mb-3">
+        <label for="" class="form-label">Nationality</label>
+        <input type="text" class="form-control" asp-for="Nationality" required>
+        <div class="invalid-feedback">Nationality Required</div>
+    </div>
+
+    <div class="mb-3">
+        <label for="Role_Id" class="form-label">Role</label>
+        <select asp-for="Role_Id" asp-items="roles" class="form-control" required>
+            <option value="">--Please Select Role--</option>
+        </select>
+        <div class="invalid-feedback">Role Required</div>
+    </div>
+
+    <div class="mb-3">
+        <label for="Country_Id" class="form-label">Country</label>
+        <select asp-for="Country_Id" asp-items="countries" class="form-control" required>
+            <option value="">--Please Select Country--</option>
+        </select>
+        <div class="invalid-feedback">Country Required</div>
+    </div>
+
+    <div class="mb-3">
+        <label for="State_Id" class="form-label">State</label>
+        <select asp-for="State_Id" asp-items="states" class="form-control" required>
+            <option value="">--Please Select State--</option>
+        </select>
+        <div class="invalid-feedback">State Required</div>
+    </div>
+
+    <div class="mb-3">
+        <label for="City_Id" class="form-label">City</label>
+        <select asp-for="City_Id" asp-items="cities" class="form-control" required>
+            <option value="">--Please Select City--</option>
+        </select>
+        <div class="invalid-feedback">City Required</div>
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">Update</button>
+
+
+</form>
+
